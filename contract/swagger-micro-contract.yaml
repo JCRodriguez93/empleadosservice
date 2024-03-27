@@ -1,0 +1,144 @@
+---
+openapi: 3.0.0
+info:
+  description: Contract associated with the GestionEmpleadosMicro application
+  version: 1.0.0
+  title: GestionEmpleadosMicro
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+  - name: GestionEmpleadosMicro
+    description: Controller for the GestionEmpleadosMicro application
+paths:
+  "/empleados/{id}":
+    get:
+      summary: Consulta un empleado por ID
+      description: Consulta un empleado específico por su ID.
+      operationId: getEmpleadoId
+      tags:
+        - Empleados
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Identificador del empleado
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empleado"
+        "404":
+          description: Empleado no encontrado
+    put:
+      summary: Modificación de empleado
+      description: Modifica un empleado en la base de datos.
+      operationId: putEmpleadoId
+      tags:
+        - Empleados
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Identificador del empleado
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Empleado"
+      responses:
+        "200":
+          description: Empleado modificado satisfactoriamente.
+        "400":
+          description: Error en la solicitud o datos incorrectos.
+        "404":
+          description: Empleado no encontrado
+        "500":
+          description: Error interno del servidor
+    delete:
+      summary: Eliminación de empleado
+      description: Elimina un empleado de la base de datos por su ID.
+      operationId: deleteEmpleadoId
+      tags:
+        - Empleados
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Identificador del empleado
+      responses:
+        "204":
+          description: Empleado eliminado satisfactoriamente.
+        "404":
+          description: Empleado no encontrado
+        "500":
+          description: Error interno del servidor
+  "/empleados":
+    get:
+      summary: Consulta lista de empleados
+      description: Consulta de los empleados dados de alta en la base de datos
+      operationId: getEmpleados
+      tags:
+        - Empleados
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: EmpleadosResponse
+                properties:
+                  Empleados:
+                    type: array
+                    description: Lista de empleados
+                    items:
+                      $ref: "#/components/schemas/Empleado"
+        "500":
+          description: Error interno del servidor
+    post:
+      summary: Creación de empleado
+      description: Crea un nuevo empleado en la base de datos.
+      operationId: postEmpleado
+      tags:
+        - Empleados
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Empleado"
+      responses:
+        "201":
+          description: Empleado creado satisfactoriamente.
+        "400":
+          description: Error en la solicitud o datos incorrectos.
+        "500":
+          description: Error interno del servidor
+components:
+  schemas:
+    Empleado:
+      type: object
+      properties:
+        id_empleado:
+          type: integer
+          description: El ID del empleado a asignar. Debe ser proporcionado.
+        nombre:
+          type: string
+          description: El nombre del empleado.
+        id_centro:
+          type: integer
+          description: El ID del centro al que está asociado el empleado.
+        centro:
+          type: string
+          description: El nombre del centro al que está asociado el empleado
