@@ -23,13 +23,6 @@ public class EmpleadosController implements EmpleadosApi{
 	
 	
 
-	public EmpleadosController(EmpleadosService service) {
-		super();
-		this.service = service;
-	}
-
-
-
 	@Override
 	public ResponseEntity<EmpleadosResponse> getEmpleados(){
 		EmpleadosResponse response = new EmpleadosResponse();
