@@ -1,27 +1,23 @@
 package es.microservice.application.controller;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import es.microservice.application.api.EmpleadosApi;
 import es.microservice.application.model.Empleado;
 import es.microservice.application.model.EmpleadosResponse;
 import es.microservice.application.service.EmpleadosService;
+import javax.validation.Valid;
 
 
 @RestController
-@RequestMapping("/")
 public class EmpleadosController implements EmpleadosApi{
 	
 	@Autowired
 	private EmpleadosService service;
-	
-	
+
 
 	@Override
 	public ResponseEntity<EmpleadosResponse> getEmpleados(){
