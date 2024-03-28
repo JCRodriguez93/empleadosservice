@@ -3,11 +3,13 @@ package es.microservice.application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
-@EntityScan("es.microservice.application.entity")
-@EnableJpaRepositories("es.microservice.application.repository")
+@EntityScan(basePackages = "{es.microservice.application.entity}")
+@EnableJpaRepositories(basePackages = "{es.microservice.application.repository}")
+@ComponentScan(basePackages= "{es.microservice.application.repository}")
 @SpringBootApplication
 public class DemoApplication {
 
