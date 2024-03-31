@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EntityScan(basePackages = "{es.microservice.application.entity}")
 @EnableJpaRepositories(basePackages = "{es.microservice.application.repository}")
-@ComponentScan(basePackages= "{es.microservice.application.repository}")
+@ComponentScan(basePackages= "{es.microservice.application}")
+
 @SpringBootApplication
 public class DemoApplication {
 

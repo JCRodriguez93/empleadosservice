@@ -1,9 +1,9 @@
 ---
 openapi: 3.0.0
 info:
-  description: Contract associated with the GestionEmpleadosMicro application
+  description: Contract associated with the EmpleadosYCentros application
   version: 1.0.0
-  title: GestionEmpleadosMicro
+  title: EmpleadosYCentros
   termsOfService: http://swagger.io/terms/
   contact:
     email: apiteam@swagger.io
@@ -11,8 +11,8 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 tags:
-  - name: GestionEmpleadosMicro
-    description: Controller for the GestionEmpleadosMicro application
+  - name: EmpleadosYCentros
+    description: Controller for the EmpleadosYCentros application
 paths:
   "/empleados/{id}":
     get:
