@@ -1,19 +1,21 @@
 package es.microservice.application.controller;
 
 
+import es.microservice.application.api.EmpleadosApi;
+import es.microservice.application.model.Empleado;
+import es.microservice.application.model.EmpleadosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import es.microservice.application.api.EmpleadosApi;
-import es.microservice.application.model.Empleado;
-import es.microservice.application.model.EmpleadosResponse;
+
 import es.microservice.application.service.EmpleadosService;
 import javax.validation.Valid;
 
 
+
 @RestController
-public class EmpleadosController implements EmpleadosApi{
+public class EmpleadosController implements EmpleadosApi {
 	
 	@Autowired
 	private EmpleadosService service;
@@ -48,7 +50,9 @@ public class EmpleadosController implements EmpleadosApi{
 	}
 
 
-	 @Override
+
+
+	@Override
 	    public ResponseEntity<Void> deleteEmpleadoId(String id){
 	        HttpStatus status = service.deleteEmpleadoId(Integer.valueOf(id));
 	        return new ResponseEntity<>(status);

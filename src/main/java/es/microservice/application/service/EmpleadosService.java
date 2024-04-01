@@ -2,35 +2,28 @@ package es.microservice.application.service;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
-
 import es.microservice.application.entity.EmpleadosEntity;
 import es.microservice.application.mapper.EmpleadosMapper;
 import es.microservice.application.model.Empleado;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+
 import es.microservice.application.repository.EmpleadosRepository;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 
 @Service
 @Transactional
 @Validated
 public class EmpleadosService {
-private EmpleadosMapper mapper = EmpleadosMapper.INSTANCE;
+    private EmpleadosMapper mapper = EmpleadosMapper.INSTANCE;
 
     @Autowired
     private EmpleadosRepository repository;
 
-    
-    public EmpleadosService(EmpleadosRepository repository) {
-        this.repository = repository;
-    }
-    
-    
-	public List<Empleado> getEmpleados() {
+
+    public List<Empleado> getEmpleados() {
         return mapper.toApiDomain(repository.findAll());
     }
 
@@ -61,7 +54,8 @@ private EmpleadosMapper mapper = EmpleadosMapper.INSTANCE;
 
     public Empleado getEmpleadoById(String id) {
         Optional<EmpleadosEntity> optEmpleado = repository.findById(Integer.valueOf(id));
-        return optEmpleado.map(mapper::toApiDomain).orElse(null); 
+        return optEmpleado.map(mapper::toApiDomain).orElse(null);
     }
-}
 
+
+}
