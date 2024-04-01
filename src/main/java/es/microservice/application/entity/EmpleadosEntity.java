@@ -24,6 +24,8 @@ public class EmpleadosEntity {
     @Column(name = "NOMBRE")
     private String nombre;
 
+    @Column(name = "ID_CENTRO")
+    private String idCentro;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "ID_CENTRO", referencedColumnName = "NUM_CENTRO", insertable = false, updatable = false)
     private CentrosEntity centro;
